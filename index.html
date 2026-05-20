@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Live Shopping Stream</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <div class="live-app">
+
+    <video
+      id="liveVideo"
+      class="live-video"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="auto"
+      poster=""
+    >
+      <source src="sample_video.mp4" type="video/mp4">
+    </video>
+
+    <div class="overlay"></div>
+
+    <header class="top-bar">
+      <div class="top-bar-inner glass-bar">
+        <div class="top-bar-row top-bar-row-1">
+          <button class="icon-btn" type="button" aria-label="Close">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+          <div class="top-bar-meta">
+            <span class="live-badge-pill">
+              <i class="fa-solid fa-circle live-dot" aria-hidden="true"></i>
+              LIVE
+            </span>
+            <span class="viewers-pill">
+              <i class="fa-regular fa-eye" aria-hidden="true"></i>
+              <span id="viewerCount">12,366</span>
+            </span>
+          </div>
+          <button class="icon-btn" type="button" aria-label="Share" id="topShareBtn">
+            <i class="fa-solid fa-share-nodes"></i>
+          </button>
+        </div>
+        <div class="top-bar-row top-bar-row-2">
+          <div class="streamer-block">
+            <div class="avatar-wrap">
+              <img src="https://i.pravatar.cc/100?img=12" alt="" class="streamer-avatar">
+              <span class="verified-badge" title="Verified">
+                <i class="fa-solid fa-check"></i>
+              </span>
+            </div>
+            <div class="streamer-text">
+              <h4 class="channel-name">Luxe Boutique</h4>
+              <p class="followers-count">850k followers</p>
+            </div>
+          </div>
+          <button type="button" class="follow-btn" id="followBtn">
+            <i class="fa-solid fa-user-plus" aria-hidden="true"></i>
+            Follow
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div class="purchase-popup glass" id="purchasePopup">
+      Priya from Mumbai purchased Wireless Earbuds
+    </div>
+
+    <!-- BOTTOM UI -->
+    <div class="bottom-ui">
+
+      <div class="chat-section" id="chatSection">
+        <div class="chat-messages" id="chatMessages"></div>
+      </div>
+
+      <div class="product-section" id="productSection">
+        <div class="swiper product-swiper" id="productSwiper">
+          <div class="swiper-wrapper">
+
+            <div class="swiper-slide">
+              <div class="product-card glass active featured-live-product" data-product="Sneakers" data-mrp="4999" data-price="2499">
+                <span class="current-tag">Current Product</span>
+                <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=400" alt="">
+                <div class="product-card-body">
+                  <span class="discount">50% OFF</span>
+                  <h4>Premium Sneakers</h4>
+                  <div class="price-row">
+                    <span class="price">₹2,499</span>
+                    <span class="old-price">₹4,999</span>
+                  </div>
+                  <button class="buy-btn" type="button">Buy Now</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="product-card glass" data-product="Headphones" data-mrp="3299" data-price="1999">
+                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=400" alt="">
+                <div class="product-card-body">
+                  <span class="discount">40% OFF</span>
+                  <h4>Wireless Headphones</h4>
+                  <div class="price-row">
+                    <span class="price">₹1,999</span>
+                    <span class="old-price">₹3,299</span>
+                  </div>
+                  <button class="buy-btn" type="button">Buy Now</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="product-card glass" data-product="Watch" data-mrp="6499" data-price="3999">
+                <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=400" alt="">
+                <div class="product-card-body">
+                  <span class="discount">35% OFF</span>
+                  <h4>Smart Watch</h4>
+                  <div class="price-row">
+                    <span class="price">₹3,999</span>
+                    <span class="old-price">₹6,499</span>
+                  </div>
+                  <button class="buy-btn" type="button">Buy Now</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="product-card glass" data-product="Camera" data-mrp="26999" data-price="19999">
+                <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=400" alt="">
+                <div class="product-card-body">
+                  <span class="discount">25% OFF</span>
+                  <h4>Camera</h4>
+                  <div class="price-row">
+                    <span class="price">₹19,999</span>
+                    <span class="old-price">₹26,999</span>
+                  </div>
+                  <button class="buy-btn" type="button">Buy Now</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="product-card glass" data-product="Bag" data-mrp="2699" data-price="1499">
+                <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?q=80&w=400" alt="">
+                <div class="product-card-body">
+                  <span class="discount">45% OFF</span>
+                  <h4>Travel Bag</h4>
+                  <div class="price-row">
+                    <span class="price">₹1,499</span>
+                    <span class="old-price">₹2,699</span>
+                  </div>
+                  <button class="buy-btn" type="button">Buy Now</button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom-bar">
+        <div class="bottom-actions">
+          <div class="bottom-toggle-group">
+            <button class="control-btn panel-toggle-btn" id="chatToggle" type="button" title="Show / hide chat">
+              <i class="fa-solid fa-comments"></i>
+              <span class="control-label">Chat</span>
+            </button>
+            <button class="control-btn panel-toggle-btn" id="productsToggle" type="button" title="Show / hide products">
+              <i class="fa-solid fa-bag-shopping"></i>
+              <span class="control-label">Products</span>
+            </button>
+          </div>
+
+          <div class="reel-actions">
+            <button class="control-btn" id="muteBtn" type="button" title="Mute">
+              <i class="fa-solid fa-volume-xmark"></i>
+            </button>
+
+            <button class="control-btn" id="heartBtn" type="button" title="Like">
+              <i class="fa-solid fa-heart"></i>
+            </button>
+
+            <button class="control-btn" id="fullscreenBtn" type="button" title="Fullscreen">
+              <i class="fa-solid fa-expand"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="chat-input-area glass">
+          <input type="text" id="chatInput" placeholder="Add a comment...">
+          <button id="emojiBtn" type="button">😊</button>
+          <button id="sendBtn" type="button" class="send-btn" aria-label="Send message" title="Send">
+            <i class="fa-solid fa-paper-plane"></i>
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="product-detail-overlay" id="productModal" aria-hidden="true">
+      <div class="product-detail-card" role="dialog" aria-labelledby="modalTitle">
+        <button type="button" class="close-modal" id="closeModal" aria-label="Close">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <div class="product-detail-hero">
+          <img id="modalImage" src="" alt="" class="product-detail-img">
+          <span class="modal-discount-badge" id="modalDiscountBadge">50% OFF</span>
+        </div>
+
+        <div class="modal-details">
+          <span class="modal-live-offer">
+            <i class="fa-solid fa-bolt"></i> Live exclusive price
+          </span>
+          <h2 id="modalTitle"></h2>
+          <p class="product-detail-desc">
+            Premium quality with fast delivery. Order during this live to unlock the price below.
+          </p>
+
+          <div class="price-breakdown">
+            <div class="price-row-item">
+              <span class="price-label">MRP</span>
+              <span class="price-value mrp-value" id="modalMrp">₹4,999</span>
+            </div>
+            <div class="price-row-item highlight">
+              <span class="price-label">Live price</span>
+              <span class="price-value live-price-value" id="modalPrice">₹2,499</span>
+            </div>
+            <div class="price-row-item">
+              <span class="price-label">Discount</span>
+              <span class="price-value discount-value" id="modalDiscount">50% OFF</span>
+            </div>
+          </div>
+
+          <div class="savings-banner" id="modalSavings">
+            <i class="fa-solid fa-piggy-bank"></i>
+            <span>You save <strong id="modalSavingsAmount">₹2,500</strong> on purchasing now</span>
+          </div>
+
+          <div class="qty-box">
+            <span class="qty-label">Quantity</span>
+            <div class="qty-controls">
+              <button id="minusQty" type="button" aria-label="Decrease quantity">−</button>
+              <span id="qty">1</span>
+              <button id="plusQty" type="button" aria-label="Increase quantity">+</button>
+            </div>
+          </div>
+
+          <div class="modal-actions">
+            <button type="button" class="secondary-btn">Add To Cart</button>
+            <button class="primary-btn" type="button">Buy Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="script.js"></script>
+
+</body>
+
+</html>
